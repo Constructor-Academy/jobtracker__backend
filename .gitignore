@@ -1,0 +1,56 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/frontend/node_modules
+/frontend/.pnp
+/frontend.pnp.js
+
+# testing
+/frontend/coverage
+
+# production
+/frontend/build
+
+# misc
+/frontend/.DS_Store
+/frontend/.env.local
+/frontend/.env.development.local
+/frontend/.env.test.local
+/frontend/.env.production.local
+
+/frontend/npm-debug.log*
+/frontend/yarn-debug.log*
+/frontend/yarn-error.log*
+
+/frontend-js/node_modules
+/frontend-js/.pnp
+/frontend-js.pnp.js
+
+# testing
+/frontend-js/coverage
+
+# production
+/frontend-js/build
+
+# misc
+/frontend-js/.DS_Store
+/frontend-js/.env.local
+/frontend-js/.env.development.local
+/frontend-js/.env.test.local
+/frontend-js/.env.production.local
+
+/frontend-js/npm-debug.log*
+/frontend-js/yarn-debug.log*
+/frontend-js/yarn-error.log*
+
+# envs files
+/envs/dev.env
+/envs/prod.env
+
+.idea
+*.pyc
+.DS_Store
+media-files
+
+# developer filers
+db_cedric.json

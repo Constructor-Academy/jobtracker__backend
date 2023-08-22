@@ -1,0 +1,409 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css?family=Pacifico|Source+Sans+Pro:400,700");
+@page {
+  margin: 0;
+  size: A4 landscape; /* 21cm x 29.7cm */
+}
+
+@page:first {
+  background: url(title-page-bg-academy.png) no-repeat center;
+  background-size: cover;
+  margin: 0;
+}
+
+:root {
+  --primary-color: #00A987;
+  --secondary-color: #FFC622;
+  --primary-gradient-fallback: #1d5692;
+  --link-color: #008CE2;
+}
+
+@font-face {
+    font-family: ALS Hauss, sans-serif;
+    font-style: normal;
+    src: url(ALSHaussVariableGX.ttf) format("truetype-variations");
+    font-weight: 100 900;
+}
+
+/*!* IMPORTANT : Padding is adding width and height to the box - not like in real web development!! *!*/
+html {
+  color: #393939;
+  font-family: "ALS Hauss";
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 300;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.cover {
+  height: 210mm;
+  width: 297mm;
+  display: flex;
+  flex-direction: column;
+}
+
+.cover-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 20mm;
+  height: 130mm;
+  width: 257mm;
+}
+
+.title-page-logo-container {
+  height: 100px;
+  width: 224px;
+}
+
+.title-page-logo {
+  height: 67px;
+}
+
+.cover-title {
+  font-size: 68px;
+  line-height: 76px;
+  font-weight: 500;
+  color: white;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.cover-subtitle {
+  margin-top: 150px;
+  font-size: 72px;
+  line-height: 86px;
+  font-weight: 500;
+  color: white;
+}
+
+.cover-subtitle span {
+  color: var(--secondary-color);
+}
+
+.cover-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50mm;
+  width: 257mm;
+  padding: 0 18mm;
+}
+
+.cover-footer-logo-container {
+  height: 20mm;
+  padding: 15mm 0;
+}
+
+.cover-footer-logo {
+  height: 10mm;
+}
+
+.cover-footer-address-container {
+  display: flex;
+  align-items: center;
+  height: 30mm;
+  width: 160mm;
+  padding: 10mm 0 10mm 0;
+}
+
+.cover-address {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  width: 80mm;
+  height: 30mm;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 26px;
+  font-style: normal;
+}
+
+.cover-address a {
+  color: white;
+  text-decoration: none;
+}
+
+/* STUDENTS CARD */
+.students-container {
+  display: flex;
+  justify-content: space-around;
+  /*padding: 10mm;*/
+}
+
+.space-around {
+  justify-content: space-around;
+}
+
+.space-around > .students-item {
+  width: 79mm;
+  padding-left: 10mm;
+  padding-right: 10mm;
+}
+
+.space-evenly {
+  justify-content: space-evenly;
+}
+
+.space-evenly > .students-item {
+  width: 79mm;
+  padding-left: 34.75mm;
+  padding-right: 34.75mm;
+}
+
+.center {
+  justify-content: center;
+}
+
+.center > .students-item {
+  width: 79mm;
+  padding-left: 109mm;
+  padding-right: 109mm;
+}
+
+.odd-color {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.odd-color .category-title {
+  color: white;
+}
+
+.odd-color .category-title-inline-item {
+  color: white;
+}
+
+.students-item {
+  padding-top: 20mm;
+  padding-bottom: 10mm;
+  height: 180mm;
+  overflow: hidden;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+}
+
+.students-contact-details-container {
+  min-height: 35mm;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.students-contact-info {
+  flex-grow: 0;
+  max-width: 50mm;
+}
+
+.students-avatar {
+  width: 25mm;
+  height: 25mm;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 4px;
+}
+
+.students-name {
+  margin-bottom: 4px;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.students-links {
+  display: flex;
+  align-items: center;
+  height: 8.5mm;
+  width: 50mm;
+  margin-bottom: 8px;
+}
+
+.students-link-item {
+  width: 25px;
+  height: 25px;
+  margin-right: 8px;
+}
+
+.contact-icon {
+  width: 100%;
+  height: 100%;
+}
+
+.students-summary {
+  margin-top: 16px;
+  margin-bottom: 5px;
+  font-size: 14px;
+  line-height: 16px;
+  height: 100px;
+}
+
+.category {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+  align-self: center;
+}
+
+.category-xs {
+  min-height: 20px;
+}
+
+.category-s {
+  min-height: 40px;
+}
+
+.category-m {
+  min-height: 60px;
+}
+
+.category-l {
+  min-height: 80px;
+}
+
+.category-title {
+  font-size: 14px;
+  height: 12px;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 5px;
+}
+
+.category-title-inline-item {
+  color: #393939;
+  font-weight: 400;
+}
+
+.category-content {
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 400;
+}
+
+.languages span {
+  font-size: 14px;
+}
+
+.divider {
+  width: 4px;
+  height: 160mm;
+  align-self: center;
+  background: var(--primary-gradient-fallback);
+  background: linear-gradient(142deg, rgba(29,86,146,1) 0%, rgba(98,173,249,1) 100%);
+  border-radius: 2px;
+  margin: 0 8mm;
+}
+
+/* CONTACT PAGE */
+.contact-page {
+  height: 210mm;
+  width: 297mm;
+  display: flex;
+  justify-content: space-between;
+}
+
+.contact-header {
+  display: flex;
+  flex-direction: column;
+  padding: 20mm;
+  width: 207mm;
+}
+
+.contact-footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 90mm;
+  padding: 20mm 10mm;
+  background: url(contact-page-footer-bg.png) no-repeat center;
+  background-size: cover;
+}
+
+.contact-footer-logo-container {
+  height: 100px;
+  width: 60mm;
+}
+
+.contact-footer-logo {
+  height: 55px;
+}
+
+.contact-footer-address-details {
+  width: 60mm;
+  font-size: 17px;
+  line-height: 22px;
+  font-weight: 400;
+  color: white;
+}
+
+.contact-footer-address-details p {
+  margin-bottom: 10mm;
+}
+
+.contact-footer-address-details a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.contact-title {
+  width: 100mm;
+  font-size: 24px;
+  line-height: 28px;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 15pt;
+}
+
+.contact-description {
+  width: 150mm;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  margin-bottom: 24pt;
+}
+
+.contact-team-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.business-dev-manager-container {
+  width: 150mm;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.business-dev-manager-avatar {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.business-dev-manager-details {
+  display: flex;
+  flex-direction: column;
+  height: 35mm;
+  justify-content: center;
+  margin-left: 35px;
+  font-size: 15px;
+}
+
+.business-dev-manager-name {
+  margin-bottom: 3pt;
+}
+
+.business-dev-manager-job-title {
+  margin-bottom: 3pt;
+}
+
+.business-dev-manager-email {
+  color: var(--link-color);
+  text-underline-offset: 20mm;
+}

@@ -1,0 +1,10 @@
+{% extends "admin/base.html" %}
+{% load static %}
+{% block title %}JobTracker Admin{% endblock %}
+
+{% block extrahead %}
+<link rel="shortcut icon" href="{%  static 'favicon.ico' %}">
+{% endblock %}
+{% block branding %}
+<h1 id="site-name"><a href="{% url 'admin:index' %}">JobTracker Admin</a></h1>
+{% endblock %}

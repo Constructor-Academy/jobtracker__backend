@@ -1,0 +1,62 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres:11
+    container_name: jobtracker-postgres
+    ports:
+      - '5485:5432'
+    env_file:
+      - ./envs/dev.env
+    volumes:
+      - postgres_jt:/var/lib/postgresql/data
+    platform: linux/amd64
+
+  backend:
+    image: jobtracker-backend
+    container_name: jobtracker-django
+    restart: always
+    env_file:
+      - ./envs/dev.env
+    command: "tail -f /dev/null"
+    ports:
+      - '8000:8000'
+    depends_on:
+      - postgres
+    volumes:
+      - ./backend:/backend
+      - ./media-files:/media-files
+      - ./static-files:/static-files
+    tty: true
+    platform: linux/amd64
+
+  redis:
+    image: redis:7.0.10
+    container_name: jobtracker-redis
+    restart: always
+    volumes:
+      - redis_data:/data
+    platform: linux/amd64
+
+  celery:
+    image: jobtracker-backend
+    container_name: jobtracker-celery
+    restart: always
+    env_file:
+      - ./envs/dev.env
+    command: 'celery -A app worker -l info'
+    volumes:
+      - ./backend:/backend
+      - ./media-files:/media-files
+      - ./static-files:/static-files
+    depends_on:
+      - postgres
+      - backend
+      - redis
+    platform: linux/amd64
+
+volumes:
+  postgres_jt:
+  redis_data:
+  media-files:
+  static-files:

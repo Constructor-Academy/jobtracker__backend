@@ -1,0 +1,191 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+        <title>Booklet</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="{% static 'users/booklet.css' %}">
+	</head>
+
+	<body>
+        <section class="cover">
+            <header class="cover-header">
+                <div class="cover-title-container">
+                    <a class="title-page-logo-container" href="https://academy.constructor.org">
+                        <img class="title-page-logo" alt="Constructor Academy logo" src={% static 'users/constructor-academy-logo-white.png' %} />
+                    </a>
+                    <h2 class="cover-subtitle"><span>{{ title|default:"no title.." }}</span><br> Graduates</h2>
+                </div>
+            </header>
+            <footer class="cover-footer">
+                <div class="cover-footer-address-container">
+                    <address class="cover-address">
+                        <a href="https://academy.constructor.org">academy.constructor.org</a>
+                    </address>
+                </div>
+            </footer>
+        </section >
+
+
+        {% for group in students %}
+            {% ifequal group|length 3 %}
+                <section class="students-container space-around">
+            {% endifequal %}
+            {% ifequal group|length 2 %}
+                <section class="students-container space-evenly">
+            {% endifequal %}
+            {% ifequal group|length 1 %}
+                <section class="students-container center">
+            {% endifequal %}
+                {% for student in group %}
+                        {% if forloop.counter == 2 %}
+                        <div class="students-item odd-color">
+                        {% else %}
+                        <div class="students-item">
+                        {% endif %}
+                        <div class="students-contact-details-container">
+                            <img alt="avatar" class="students-avatar" src={{ student.avatar }} />
+                            <div class="students-contact-info">
+                                <h2 class="students-name">{{ student.full_name }}</h2>
+
+                                <div class="students-links">
+                                    {% if student.linkedin_profile %}
+                                        <a class="students-link-item" href="{{ student.linkedin_profile }}">
+                                            {% if forloop.counter == 2 %}
+                                                <img class="contact-icon" alt="LinkedIn" src={% static 'users/linkedin-white-icon.png' %} />
+                                                {% else %}
+                                                <img class="contact-icon" alt="LinkedIn" src={% static 'users/linkedin-green-icon.png' %} />
+                                            {% endif %}
+                                        </a>
+                                    {% endif %}
+                                    <a class="students-link-item" href="mailto:{{ student.email }}">
+                                        {% if forloop.counter == 2 %}
+                                            <img class="contact-icon" alt="Email" src={% static 'users/email-white-icon.png' %} />
+                                        {% else %}
+                                            <img class="contact-icon" alt="Email" src={% static 'users/email-green-icon.png' %} />
+                                        {% endif %}
+                                    </a>
+                                    {% if student.github_profile %}
+                                        <a class="students-link-item" href="{{ student.github_profile }}">
+                                            {% if forloop.counter == 2 %}
+                                                <img class="contact-icon" alt="Github" src={% static 'users/github-white-icon.png' %} />
+                                            {% else %}
+                                                <img class="contact-icon" alt="Github" src={% static 'users/github-green-icon.png' %} />
+                                            {% endif %}
+                                        </a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+
+                        <p class="students-summary">{{ student.user_description }}</p>
+
+                        {% if student.languages %}
+                            <div class="category category-m">
+                                <h2 class="category-title">Languages:</h2>
+                                {% autoescape off %}
+                                    <p class="category-content languages">{{ student.languages }}</p>
+                                {% endautoescape %}
+                            </div>
+                        {% endif %}
+
+                        {% if student.years_of_experience %}
+                            <div class="category category-xs">
+                                <h2 class="category-title">Years of work experience: <span class="category-title-inline-item">{{ student.years_of_experience }}</span></h2>
+                            </div>
+                        {% endif %}
+
+                        {% if student.final_project %}
+                            <div class="category category-s">
+                                <h2 class="category-title">Bootcamp final project:</h2>
+                                <p class="category-content">
+                                    {{ student.final_project }}
+                                </p>
+                            </div>
+                        {% endif %}
+
+                        {% if student.languages %}
+                            <div class="category category-l">
+                                <h2 class="category-title">Technical skills:</h2>
+                                <p class="category-content">
+                                    {{ student.skills }}
+                                </p>
+                            </div>
+                        {% endif %}
+
+                        {% if student.job_search_area %}
+                            <div class="category category-l">
+                                <h2 class="category-title">Job search area:</h2>
+                                <p class="category-content">
+                                    {{ student.job_search_area }}
+                                </p>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </section >
+        {% endfor %}
+
+
+        <section class="contact-page" >
+            <header class="contact-header">
+                <h1 class="contact-title">Thank you!</h1>
+                <p class="contact-description">If you want more information about any of our students, do not hesitate to contact us or any of them directly.</p>
+                <div class="contact-team-container">
+                    <div class="business-dev-manager-container">
+                        <img class="business-dev-manager-avatar" alt="Marc Neuber" src={% static 'users/marc-picture.jpeg' %} />
+                        <div class="business-dev-manager-details">
+                            <h3 class="business-dev-manager-name">Marc Neuber</h3>
+                            <p class="business-dev-manager-job-title">Head Student Success</p>
+                            <a class="business-dev-manager-email" href="mailto:marcn@constructor.org">
+                                marcn@constructor.org
+                            </a>
+                        </div>
+                    </div>
+                    <div class="business-dev-manager-container">
+                        <img class="business-dev-manager-avatar" alt="Katharina Fürst" src={% static 'users/katharina-picture.jpeg' %} />
+                        <div class="business-dev-manager-details">
+                            <h3 class="business-dev-manager-name">Katharina Fürst</h3>
+                            <p class="business-dev-manager-job-title">City Manager Munich</p>
+                            <a class="business-dev-manager-email" href="mailto:katharinaf@constructor.org">
+                                katharinaf@constructor.org
+                            </a>
+                        </div>
+                    </div>
+                    <div class="business-dev-manager-container">
+                        <img class="business-dev-manager-avatar" alt="Carol Fuzzard" src={% static 'users/carol-picture.png' %} />
+                        <div class="business-dev-manager-details">
+                            <h3 class="business-dev-manager-name">Carol Fuzzard</h3>
+                            <p class="business-dev-manager-job-title">Head of Career and Alumni Services</p>
+                            <a class="business-dev-manager-email" href="mailto:cf@constructor.org">
+                                cf@constructor.org
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <footer class="contact-footer">
+                <a class="contact-footer-logo-container" href="https://academy.constructor.org">
+                    <img class="contact-footer-logo" alt="Constructor Academy logo" src={% static 'users/constructor-academy-logo-white.png' %} />
+                </a>
+                <div class="contact-footer-address-details">
+                    <p>
+                        Constructor Academy<br/>
+                        Heinrichstrasse 200<br/>
+                        8005 Zürich
+                    </p>
+                    <p>
+                        Constructor Academy<br/>
+                        Unsöldstrasse 2<br/>
+                        80538 München
+                    </p>
+                    <a href="https://academy.constructor.org">
+                        academy.constructor.org
+                    </a>
+                </div>
+            </footer>
+        </section >
+	</body>
+</html>
