@@ -75,21 +75,6 @@ The Frontend code can be found [here](https://github.com/Constructor-Academy/job
 - Check API endpoints: http://localhost:8000/backend/api/docs/
 - For email functionality during local development, whitelist your email: Visit http://localhost:8000/backend/admin/emails/devemails/ and add the email address you want to use to register. Only whitelisted addresses will receive emails.
 
-🎉 That's it! With the backend ready, you can now run the frontend in parallel and start creating accounts via the UI.
-
-
-- clone repo 
-- docker build -t "jobtracker-backend" .
-- copy the `.env.template` file and create a `dev.env` file. In `dev.env`, secrets can be added. This file will be ignored by git.
-  - postgres, django_debug and secret_key variables are required
-  - email is needed for emails to be sent out, but the project will also run without it
-  - sentry_dsn is only required if you want to use sentry
-- docker-compose up -d
-- docker exec -ti jobtracker-django bash
-- python manage.py migrate
-- create a superuser with `python manage.py createsuperuser`
-- python manage.py runserver 0:8000
-- visit http://localhost:8000/backend/api/docs/ to see if it's running correctly and to discover the api endpoints
-- visit http://localhost:8000/backend/admin/emails/devemails/ and add your email address you want to use to register *during local development / on localhost*. Only registered addresses will receive emails.
+---
 
 🎉 That's it! With the backend ready, you can now run the frontend in parallel and start creating accounts via the UI.
